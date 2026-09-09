@@ -52,12 +52,16 @@ brew install ollama
 - Press `Cmd + Shift + P` and select **Chat: Manage Language Models**.
 - Create an `AGENTS.md` file in your project folder.
 
-# Execution and Test
-## Generate Verilog HDL
-- sbt run
+## Execution and Test
+### Generate Verilog HDL
+```
+sbt run
+```
 
-## Test
-- sbt test
+### Run Tests
+```
+sbt test
+```
 
 ## References
 
