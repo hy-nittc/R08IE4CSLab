@@ -63,6 +63,11 @@ sbt run
 sbt test
 ```
 
+### View the Simulation Results as Waveforms
+```
+surfer &
+```
+
 ## References
 
 ### Development Tools
