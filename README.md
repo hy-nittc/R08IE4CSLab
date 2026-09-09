@@ -79,8 +79,8 @@ brew install ollama
 7. **Digital Design with Chisel (Japanese Edition)**  
    https://www.imm.dtu.dk/~masca/chisel_book_jp.pdf
 
-8. **DTU 02139: Digital Electronics 2**  
-   http://www2.imm.dtu.dk/courses/02139/
+8. **Chisel Cheatsheet**
+https://github.com/freechipsproject/chisel-cheatsheet/releases/latest/download/chisel_cheatsheet.pdf
 
 9. **An Educational Open-Source CPU Implemented with RISC-V and Chisel**  
    https://github.com/chadyuu/riscv-chisel-book
