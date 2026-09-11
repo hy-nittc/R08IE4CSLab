@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #1e293b; }
+      .bold-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: bold; fill: #0f172a; }
+      .title-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: bold; fill: #1e40af; }
+      .wire-label { font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 11px; fill: #475569; }
+      .wire { stroke: #2563eb; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .ctrl-wire { stroke: #d97706; stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 4,4; }
+      .port { fill: #2563eb; stroke: #ffffff; stroke-width: 2; }
+      .shadow { filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.06)); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-ctrl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+    </marker>
+    <linearGradient id="topBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f8fafc" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="subBgA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="subBgB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top Module Boundary -->
+  <rect x="20" y="20" width="680" height="280" rx="16" fill="url(#topBg)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="40" y="48" class="title-label">TopModule (階層親モジュール)</text>
+
+  <!-- SubModule A -->
+  <g class="shadow">
+    <rect x="80" y="80" width="220" height="110" rx="10" fill="url(#subBgA)" stroke="#0284c7" stroke-width="2"/>
+    <text x="190" y="115" text-anchor="middle" class="bold-label" fill="#0369a1">SubModule A</text>
+    <text x="190" y="140" text-anchor="middle" class="label" fill="#475569">Logic Unit (論理演算)</text>
+    <text x="190" y="165" text-anchor="middle" class="wire-label">io.out_logic</text>
+  </g>
+
+  <!-- SubModule B -->
+  <g class="shadow">
+    <rect x="420" y="80" width="220" height="110" rx="10" fill="url(#subBgB)" stroke="#16a34a" stroke-width="2"/>
+    <text x="530" y="115" text-anchor="middle" class="bold-label" fill="#15803d">SubModule B</text>
+    <text x="530" y="140" text-anchor="middle" class="label" fill="#475569">Arith Unit (算術演算)</text>
+    <text x="530" y="165" text-anchor="middle" class="wire-label">io.out_arith</text>
+  </g>
+
+  <!-- MUX Unit -->
+  <g class="shadow" transform="translate(325, 210)">
+    <polygon points="0,0 70,0 55,50 15,50" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="35" y="30" text-anchor="middle" class="bold-label" fill="#b45309" font-size="12">MUX</text>
+  </g>
+
+  <!-- Control signal for MUX -->
+  <path d="M 230, 235 L 325, 235" class="ctrl-wire" marker-end="url(#arrow-ctrl)"/>
+  <text x="270" y="228" text-anchor="middle" class="wire-label" fill="#b45309">io.sel (選択)</text>
+
+  <!-- Wires from Submodules to MUX -->
+  <!-- SubA to MUX in0 -->
+  <path d="M 190, 190 L 190, 215 L 340, 215" class="wire" marker-end="url(#arrow)"/>
+  <!-- SubB to MUX in1 -->
+  <path d="M 530, 190 L 530, 215 L 380, 215" class="wire" marker-end="url(#arrow)"/>
+
+  <!-- MUX to Top Output -->
+  <path d="M 360, 260 L 360, 300" class="wire" marker-end="url(#arrow)"/>
+  <circle cx="360" cy="300" r="4" class="port"/>
+  <text x="360" y="316" text-anchor="middle" class="bold-label" fill="#1e40af">io.out (トップ出力)</text>
+
+  <!-- Submodule Pins -->
+  <circle cx="190" cy="190" r="3.5" class="port"/>
+  <circle cx="530" cy="190" r="3.5" class="port"/>
+</svg>

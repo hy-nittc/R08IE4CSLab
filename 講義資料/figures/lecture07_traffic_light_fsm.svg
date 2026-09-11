@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 240" width="100%" height="100%">
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+    .wire-label { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 11px; fill: #2563eb; font-weight: 600; }
+    .wire { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .wire-subtle { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .wire-clk { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 4,3; fill: none; }
+    .feedback-wire { stroke: #2563eb; stroke-width: 2.2; fill: none; }
+    .box-comb { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-seq { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.8; rx: 6; filter: url(#shadow); }
+    .box-ctrl { fill: #faf5ff; stroke: #a855f7; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-mem { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-bad { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; rx: 8; }
+    .gate { fill: #ffffff; stroke: #1e40af; stroke-width: 1.8; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow" x="-3%" y="-6%" width="106%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="760" height="240" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <rect x="180" y="15" width="460" height="42" class="box-comb" style="fill:#f0fdf4; stroke:#22c55e;"/>
+  <text x="410" y="35" class="title" style="fill:#166534;">sVehGreen (車道青 / 歩行者赤)</text>
+  <text x="410" y="50" class="subtitle">ボタン押下 &amp;&amp; timer &gt;= 10 で黄へ</text>
+
+  <line x1="410" y1="57" x2="410" y2="70" class="wire" marker-end="url(#arrow)"/>
+
+  <rect x="180" y="70" width="460" height="42" class="box-comb" style="fill:#fefce8; stroke:#eab308;"/>
+  <text x="410" y="90" class="title" style="fill:#854d0e;">sVehYellow (車道黄 / 歩行者赤)</text>
+  <text x="410" y="105" class="subtitle">timer &gt;= 3 で赤へ</text>
+
+  <line x1="410" y1="112" x2="410" y2="125" class="wire" marker-end="url(#arrow)"/>
+
+  <rect x="180" y="125" width="460" height="42" class="box-comb" style="fill:#f0fdf4; stroke:#16a34a;"/>
+  <text x="410" y="145" class="title" style="fill:#15803d;">sVehRedPedGreen (車道赤 / 歩行者青)</text>
+  <text x="410" y="160" class="subtitle">timer &gt;= 8 で歩行者終了 (要求クリア)</text>
+
+  <line x1="410" y1="167" x2="410" y2="180" class="wire" marker-end="url(#arrow)"/>
+
+  <rect x="180" y="180" width="460" height="42" class="box-comb" style="fill:#fef2f2; stroke:#ef4444;"/>
+  <text x="410" y="200" class="title" style="fill:#991b1b;">sVehRedPedYellow (車道赤 / 歩行者点滅・注意)</text>
+  <text x="410" y="215" class="subtitle">timer &gt;= 3 で車道青へ復帰</text>
+
+  <!-- Loop back path: bottom -> left -> top -->
+  <path d="M 180,201 L 100,201 L 100,36 L 180,36" class="feedback-wire" marker-end="url(#arrow)"/>
+  <text x="80" y="125" class="wire-label" text-anchor="middle" transform="rotate(-90 80,125)">車道青へ復帰 (初期化)</text>
+
+</svg>

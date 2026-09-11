@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="100%" height="100%">
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+    .wire-label { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 11px; fill: #2563eb; font-weight: 600; }
+    .wire { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .wire-subtle { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .wire-clk { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 4,3; fill: none; }
+    .feedback-wire { stroke: #2563eb; stroke-width: 2.2; fill: none; }
+    .box-comb { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-seq { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.8; rx: 6; filter: url(#shadow); }
+    .box-ctrl { fill: #faf5ff; stroke: #a855f7; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-mem { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-bad { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; rx: 8; }
+    .gate { fill: #ffffff; stroke: #1e40af; stroke-width: 1.8; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow" x="-3%" y="-6%" width="106%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="720" height="200" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <rect x="220" y="15" width="280" height="35" class="box-seq"/>
+  <text x="360" y="37" class="title" style="fill:#166534;">個別レジスタ (D-FF: RegInit)</text>
+  <text x="560" y="37" class="label">最速 / 最小容量</text>
+
+  <rect x="180" y="60" width="360" height="35" class="box-comb"/>
+  <text x="360" y="82" class="title">レジスタファイル (Mem: 非同期読出)</text>
+  <text x="560" y="82" class="label">CPU汎用レジスタ</text>
+
+  <rect x="140" y="105" width="440" height="35" class="box-mem"/>
+  <text x="360" y="127" class="title" style="fill:#c2410c;">ブロックRAM (SyncReadMem: 同期読出)</text>
+  <text x="600" y="127" class="label">BRAM/SRAM</text>
+
+  <rect x="100" y="150" width="520" height="35" class="box-ctrl"/>
+  <text x="360" y="172" class="title" style="fill:#7e22ce;">外部DRAM (DDR4 / LPDDR5)</text>
+  <text x="640" y="172" class="label">最大容量 / 高遅延</text>
+
+  <line x1="50" y1="180" x2="50" y2="25" class="wire" marker-end="url(#arrow)"/>
+  <text x="35" y="100" class="wire-label" text-anchor="middle" transform="rotate(-90 35,100)">アクセス速度</text>
+
+</svg>

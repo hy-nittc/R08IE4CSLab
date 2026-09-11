@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 200" width="100%" height="100%">
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+    .wire-label { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 11px; fill: #2563eb; font-weight: 600; }
+    .wire { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .wire-subtle { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .wire-clk { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 4,3; fill: none; }
+    .feedback-wire { stroke: #2563eb; stroke-width: 2.2; fill: none; }
+    .box-comb { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-seq { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.8; rx: 6; filter: url(#shadow); }
+    .box-ctrl { fill: #faf5ff; stroke: #a855f7; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-mem { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-bad { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; rx: 8; }
+    .gate { fill: #ffffff; stroke: #1e40af; stroke-width: 1.8; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow" x="-3%" y="-6%" width="106%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="750" height="200" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <!-- Period input from Top -->
+  <text x="230" y="22" class="wire-label" text-anchor="middle">period (周期設定)</text>
+  <line x1="230" y1="28" x2="230" y2="55" class="wire-subtle" marker-end="url(#arrow-subtle)"/>
+
+  <!-- en input from Left -->
+  <text x="20" y="85" class="wire-label">en</text>
+  <line x1="45" y1="80" x2="130" y2="80" class="wire" marker-end="url(#arrow)"/>
+
+  <!-- Period comparator & next logic -->
+  <rect x="130" y="55" width="200" height="60" class="box-comb"/>
+  <text x="230" y="82" class="title">周期比較・次状態論理</text>
+  <text x="230" y="100" class="subtitle">(cnt==period ? 0 : cnt+1)</text>
+
+  <!-- Connect to cntReg -->
+  <line x1="330" y1="80" x2="390" y2="80" class="wire" marker-end="url(#arrow)"/>
+
+  <!-- cntReg -->
+  <rect x="390" y="55" width="130" height="60" class="box-seq"/>
+  <text x="455" y="82" class="title" style="fill:#166534;">cntReg</text>
+  <text x="455" y="100" class="subtitle">(0 〜 period)</text>
+
+  <!-- Junction & line to comparator -->
+  <circle cx="545" cy="80" r="4" fill="#2563eb"/>
+  <line x1="520" y1="80" x2="580" y2="80" class="wire" marker-end="url(#arrow)"/>
+
+  <!-- Comparator -->
+  <rect x="580" y="55" width="110" height="60" class="box-comb"/>
+  <text x="635" y="82" class="title">&lt; 比較器</text>
+  <text x="635" y="100" class="subtitle">(cnt &lt; duty)</text>
+
+  <!-- Duty input from Bottom into Comparator -->
+  <line x1="635" y1="165" x2="635" y2="115" class="wire-subtle" marker-end="url(#arrow-subtle)"/>
+  <text x="645" y="155" class="wire-label">duty (オン時間)</text>
+
+  <!-- PWM Output -->
+  <line x1="690" y1="80" x2="735" y2="80" class="wire" marker-end="url(#arrow)"/>
+  <text x="740" y="75" class="label">pwmOut</text>
+
+  <!-- Bottom Feedback Loop -->
+  <path d="M 545,80 L 545,155 L 230,155 L 230,115" class="feedback-wire" marker-end="url(#arrow)"/>
+  <rect x="325" y="143" width="140" height="24" fill="#ffffff" rx="4" stroke="#bfdbfe"/>
+  <text x="395" y="159" class="wire-label" text-anchor="middle">cntReg (カウント値帰還)</text>
+
+</svg>

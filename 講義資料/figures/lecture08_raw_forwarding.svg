@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 200" width="100%" height="100%">
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+    .wire-label { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 11px; fill: #2563eb; font-weight: 600; }
+    .wire { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .wire-subtle { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .wire-clk { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 4,3; fill: none; }
+    .feedback-wire { stroke: #2563eb; stroke-width: 2.2; fill: none; }
+    .box-comb { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-seq { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.8; rx: 6; filter: url(#shadow); }
+    .box-ctrl { fill: #faf5ff; stroke: #a855f7; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-mem { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-bad { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; rx: 8; }
+    .gate { fill: #ffffff; stroke: #1e40af; stroke-width: 1.8; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow" x="-3%" y="-6%" width="106%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="740" height="200" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <text x="30" y="35" class="wire-label">io.wdata (書き込みデータ)</text>
+  <line x1="190" y1="30" x2="550" y2="30" class="wire"/>
+  <circle cx="280" cy="30" r="3.5" fill="#2563eb"/>
+  <line x1="280" y1="30" x2="280" y2="70" class="wire" marker-end="url(#arrow)"/>
+  <line x1="550" y1="30" x2="550" y2="75" class="wire" marker-end="url(#arrow)"/>
+
+  <rect x="200" y="70" width="160" height="60" class="box-mem"/>
+  <text x="280" y="98" class="title" style="fill:#c2410c;">Mem セル配列</text>
+  <text x="280" y="116" class="subtitle">(古いデータを読出)</text>
+
+  <line x1="360" y1="100" x2="520" y2="100" class="wire" marker-end="url(#arrow)"/>
+
+  <text x="30" y="165" class="wire-label">io.wen, waddr, raddr1</text>
+  <line x1="180" y1="160" x2="280" y2="160" class="wire"/>
+  <circle cx="280" cy="160" r="3.5" fill="#2563eb"/>
+  <line x1="280" y1="160" x2="280" y2="130" class="wire-subtle" marker-end="url(#arrow-subtle)"/>
+  <line x1="280" y1="160" x2="350" y2="160" class="wire" marker-end="url(#arrow)"/>
+
+  <rect x="350" y="140" width="150" height="40" class="box-comb"/>
+  <text x="425" y="160" class="title" style="font-size:11px;">一致判定比較器</text>
+  <text x="425" y="173" class="subtitle">waddr == raddr1 &amp;&amp; wen</text>
+
+  <path d="M 500,160 L 550,160 L 550,120" class="wire-subtle" marker-end="url(#arrow-subtle)"/>
+
+  <polygon points="520,70 580,75 580,115 520,120" class="gate"/>
+  <text x="548" y="99" class="title" style="font-size:11px;">MUX</text>
+
+  <line x1="580" y1="95" x2="650" y2="95" class="wire" marker-end="url(#arrow)"/>
+  <text x="655" y="100" class="label">io.rdata1</text>
+
+</svg>

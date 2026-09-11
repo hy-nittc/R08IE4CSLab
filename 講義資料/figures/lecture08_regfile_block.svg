@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 210" width="100%" height="100%">
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+    .wire-label { font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 11px; fill: #2563eb; font-weight: 600; }
+    .wire { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .wire-subtle { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .wire-clk { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 4,3; fill: none; }
+    .feedback-wire { stroke: #2563eb; stroke-width: 2.2; fill: none; }
+    .box-comb { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-seq { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.8; rx: 6; filter: url(#shadow); }
+    .box-ctrl { fill: #faf5ff; stroke: #a855f7; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-mem { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; rx: 8; filter: url(#shadow); }
+    .box-bad { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; rx: 8; }
+    .gate { fill: #ffffff; stroke: #1e40af; stroke-width: 1.8; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow" x="-3%" y="-6%" width="106%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="660" height="210" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <rect x="220" y="20" width="220" height="170" class="box-mem"/>
+  <text x="330" y="95" class="title" style="font-size:16px; fill:#c2410c;">Register File</text>
+  <text x="330" y="120" class="subtitle">8本 × 8ビット (2R1W)</text>
+
+  <text x="40" y="45" class="wire-label">io.wdata (8bit)</text>
+  <line x1="140" y1="40" x2="220" y2="40" class="wire" marker-end="url(#arrow)"/>
+
+  <text x="40" y="80" class="wire-label">io.waddr (3bit)</text>
+  <line x1="140" y1="75" x2="220" y2="75" class="wire" marker-end="url(#arrow)"/>
+
+  <text x="40" y="115" class="wire-label">io.wen (1bit)</text>
+  <line x1="140" y1="110" x2="220" y2="110" class="wire" marker-end="url(#arrow)"/>
+
+  <text x="40" y="150" class="wire-label">io.raddr1 (3bit)</text>
+  <line x1="140" y1="145" x2="220" y2="145" class="wire" marker-end="url(#arrow)"/>
+
+  <text x="40" y="180" class="wire-label">io.raddr2 (3bit)</text>
+  <line x1="140" y1="175" x2="220" y2="175" class="wire" marker-end="url(#arrow)"/>
+
+  <line x1="440" y1="75" x2="520" y2="75" class="wire" marker-end="url(#arrow)"/>
+  <text x="530" y="80" class="label">io.rdata1 (8bit)</text>
+
+  <line x1="440" y1="145" x2="520" y2="145" class="wire" marker-end="url(#arrow)"/>
+  <text x="530" y="150" class="label">io.rdata2 (8bit)</text>
+
+</svg>
