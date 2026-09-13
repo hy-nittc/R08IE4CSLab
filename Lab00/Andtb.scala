@@ -12,6 +12,7 @@ class Andtb extends AnyFlatSpec with ChiselScalatestTester {
       step(1)
       dut.io.out.expect(false.B)
       println(s"a=${dut.io.a.peekInt()},b=${dut.io.b.peekInt()},and=>${dut.io.out.peekInt()},")
+      
 
       // Test case 2: 0 AND 1 = 0
       dut.io.a.poke(false.B)
