@@ -25,7 +25,7 @@ jobs:
 
     # sbt コマンドが未導入の場合の対策
     - name: Install sbt
-      uses: coursier/setup-action@v4
+      uses: coursier/setup-action@v3
       with:
         apps: sbt
 
