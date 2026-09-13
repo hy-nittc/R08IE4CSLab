@@ -30,4 +30,5 @@ jobs:
         apps: sbt
 
     - name: Run tests
+      working-directory: Lab00
       run: sbt test
