@@ -1,0 +1,25 @@
+name: Scala CI with sbt
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: JDKとsbtキャッシュのセットアップ
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17' # プロジェクトのJDKバージョン（11, 17, 21など）
+          distribution: 'temurin'
+          cache: 'sbt'
+
+      - name: テストの実行
+        run: sbt test
